@@ -1,0 +1,149 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Ticket de Turno</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+      </ul>
+      <form class="d-flex my-2 my-lg-0">
+        <input class="form-control me-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<form class="transparent-bg needs-validation" [formGroup]="forms" (ngSubmit)="enviarFormulario()">
+
+  <div class="container container-with-border my-3 p-4">
+    <div class="row justify-content-center align-items-center">
+
+      <div class="mb-3 col-md-6 col-sm-12">
+        <div class="d-flex align-items-center input-group-append">
+          <label for="titular" class="form-label col-3">Nombre del titular</label>
+          <input type="text" class="form-control" name="titular" id="titular" [ngClass]="{
+            'is-invalid': forms.get('titular')?.invalid && (forms.get('titular')?.dirty || forms.get('titular')?.touched), 
+            'is-valid': forms.get('titular')?.valid && (forms.get('titular')?.dirty || forms.get('titular')?.touched)}" 
+            aria-describedby="helpId"
+            placeholder="Nombre del titular" formControlName="titular">
+          
+        </div>
+      </div>
+
+      <div class="mb-3 col-md-6 col-sm-12">
+        <div class="d-flex align-items-center input-group-append">
+          <label for="curp" class="form-label col-3">CURP</label>
+          <input type="text" class="form-control" name="curp" id="curp" aria-describedby="helpId" [ngClass]="{
+            'is-invalid': forms.get('curp')?.invalid && (forms.get('curp')?.dirty || forms.get('curp')?.touched), 
+            'is-valid': forms.get('curp')?.valid && (forms.get('curp')?.dirty || forms.get('curp')?.touched)}" 
+            placeholder="Ingresa la CURP" formControlName="curp">
+        </div>
+      </div>
+
+
+      <div class="mb-3 col-md-4 col-sm-12">
+        <div class="d-flex align-items-center input-group-append">
+          <label for="titular" class="form-label col-3">Nombre alumno</label>
+          <input type="text" class="form-control border-black" name="nombre" id="nombre" aria-describedby="helpId" [ngClass]="{
+            'is-invalid': forms.get('nombre')?.invalid && (forms.get('nombre')?.dirty || forms.get('nombre')?.touched),
+            'is-valid': forms.get('nombre')?.valid && (forms.get('nombre')?.dirty || forms.get('nombre')?.touched)}"
+            placeholder="nombre del alumno" formControlName="nombre">
+        </div>
+      </div>
+
+      <div class="mb-3 col-md-4 col-sm-12">
+        <div class="d-flex align-items-center input-group-append">
+          <label for="curp" class="form-label col-3">Paterno</label>
+          <input type="text" class="form-control border-black" name="paterno" id="paterno" aria-describedby="helpId" [ngClass]="{
+            'is-invalid': forms.get('paterno')?.invalid && (forms.get('paterno')?.dirty || forms.get('paterno')?.touched),
+            'is-valid': forms.get('paterno')?.valid && (forms.get('paterno')?.dirty || forms.get('paterno')?.touched)}"
+            placeholder="Apellido Paterno" formControlName="paterno">
+        </div>
+      </div>
+
+      <div class="mb-3 col-md-4 col-sm-12">
+        <div class="d-flex align-items-center input-group-append">
+          <label for="curp" class="form-label col-3">Materno</label>
+          <input type="text" class="form-control border-black" name="materno" id="materno" aria-describedby="helpId" [ngClass]="{
+            'is-invalid': forms.get('materno')?.invalid && (forms.get('materno')?.dirty || forms.get('materno')?.touched),
+            'is-valid': forms.get('materno')?.valid && (forms.get('materno')?.dirty || forms.get('materno')?.touched)}"
+            placeholder="Apellido Materno" formControlName="materno">
+        </div>
+      </div>
+
+      <div class="mb-3 col-md-3 col-sm-12">
+        <div class="d-flex align-items-center input-group-append ">
+          <label for="curp" class="form-label col-3 ">Télefono</label>
+          <input type="text" class="form-control border-black" name="telefono" id="telefono" aria-describedby="helpId" [ngClass]="{
+            'is-invalid': forms.get('telefono')?.invalid && (forms.get('telefono')?.dirty || forms.get('telefono')?.touched),
+            'is-valid': forms.get('telefono')?.valid && (forms.get('telefono')?.dirty || forms.get('telefono')?.touched)}"
+            placeholder="555-666-55" formControlName="telefono">
+        </div>
+      </div>
+      <div class="mb-3 col-md-3 col-sm-12">
+        <div class="d-flex align-items-center input-group-append">
+          <label for="curp" class="form-label col-3">Celular</label>
+          <input type="text" class="form-control border-black" name="celular" id="celular" aria-describedby="helpId" [ngClass]="{
+            'is-invalid': forms.get('celular')?.invalid && (forms.get('celular')?.dirty || forms.get('celular')?.touched),
+            'is-valid': forms.get('celular')?.valid && (forms.get('celular')?.dirty || forms.get('celular')?.touched)}"
+            placeholder="+52 555-555-555" formControlName="celular">
+        </div>
+      </div>
+      <div class="mb-3 col-md-6 col-sm-12">
+        <div class="d-flex align-items-center input-group-append">
+          <label for="curp" class="form-label col-3">Correo</label>
+          <input type="text" class="form-control border-black" name="correo" id="correo" aria-describedby="helpId" [ngClass]="{
+            'is-invalid': forms.get('correo')?.invalid && (forms.get('correo')?.dirty || forms.get('correo')?.touched),
+            'is-valid': forms.get('correo')?.valid && (forms.get('correo')?.dirty || forms.get('correo')?.touched)}"
+            placeholder="example@hotmail.com" formControlName="correo">
+        </div>
+      </div>
+
+      <div class="mb-3 col-md-12 col-sm-12 input-group-append">
+        <label for="" class="form-label col-md-12 col-sm-12 ">¿Nivel al que desea ingresar o que ya cursa el alumno?</label>
+        <select class="form-select form-select-sm" name="nivel" id="nivel" formControlName="nivel">
+          <option selected>Primaria</option>
+          <option value="1">Secundaria</option>
+          <option value="2">Bachillerato</option>
+          <option value="3">Licenciatura</option>
+        </select>
+      </div>
+
+      <div class="mb-3 col-md-12 col-sm-12 input-group-append">
+        <label for="" class="form-label col-md-12 col-sm-12 ">Municipio donde desea estudiar el alumno</label>
+        <select class="form-select form-select-sm" name="municipio" id="municipio" formControlName="municipio">
+          <option selected>Saltillo</option>
+          <option value="1">Arteaga</option>
+          <option value="2">Candela</option>
+          <option value="3">Castaños</option>
+          <option value="4">Cuatro Cienegas</option>
+
+        </select>
+      </div>
+
+      <div class="mb-3 col-md-12 col-sm-12 input-group-append">
+        <label for="" class="form-label col-md-12 col-sm-12 ">Seleccione el asunto a tratar</label>
+        <select class="form-select form-select-sm" name="asunto" id="asunto" formControlName="asunto">
+          <option selected>Inscripción</option>
+          <option value="1">Reinscripción</option>
+          <option value="2">Nuevo Ingreso</option>
+          <option value="3">Asunto Pendiente</option>
+        </select>
+      </div>
+
+
+
+      <div class="mb-3 col-4 mx-auto">
+        <button type="submit" class="btn btn-primary">Generar Turno</button>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+</form>

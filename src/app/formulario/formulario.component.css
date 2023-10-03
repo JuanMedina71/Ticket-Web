@@ -1,0 +1,58 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+.navbar-brand {
+    font-size: small;
+}
+
+.succes-icon {
+    color: rgb(113, 177, 16);
+}
+
+.error-icon {
+    color: red;
+}
+
+.empty-icon {
+    color: black
+}
+
+.transparent-bg {
+    background: rgba(255, 255, 255, 0.7); /* Fondo transparente (ajusta el valor alpha para cambiar la opacidad) */
+    background-image: url('src/assets/wallpaper.jpg'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* Ajusta el tamaño de la imagen para que cubra todo el fondo */
+    background-repeat: no-repeat; /* Evita la repetición de la imagen */
+    background-attachment: fixed; /* Fija la imagen de fondo para que no se desplace con el contenido */
+  }
+
+.form-label {
+    color: white;
+}
+
+.input-group-text {
+    background: rgba(255, 255, 255, 0.7); /* Fondo transparente (ajusta el valor alpha para cambiar la opacidad) */
+    background-image: url('src/assets/wallpaper.jpg'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* Ajusta el tamaño de la imagen para que cubra todo el fondo */
+    background-repeat: no-repeat; /* Evita la repetición de la imagen */
+    background-attachment: fixed;
+}
+
+.container-with-border {
+    border: 2px solid white; /* Establece el color y grosor del borde */
+    padding: 20px; 
+    border-radius: 20px;/* Añade un espacio interno alrededor del contenido dentro del container */
+  }
+
+  .form-label2 i {
+    margin: 0; /* Elimina los márgenes */
+    padding: 0; /* Elimina el relleno */
+  }
+
+  /* Estilo para campos inválidos */
+.is-invalid {
+    border-color: #dc3545 !important; /* Cambia el color del borde para los campos inválidos */
+  }
+  
+  /* Estilo para campos válidos */
+  .is-valid {
+    border-color: #28a745 !important; /* Cambia el color del borde para los campos válidos */
+  }
