@@ -104,7 +104,9 @@
 
       <div class="mb-3 col-md-12 col-sm-12 input-group-append">
         <label for="" class="form-label col-md-12 col-sm-12 ">¿Nivel al que desea ingresar o que ya cursa el alumno?</label>
-        <select class="form-select form-select-sm" name="nivel" id="nivel" formControlName="nivel">
+        <select class="form-select form-select-sm" name="nivel" id="nivel" formControlName="nivel" [ngClass]="{
+          'is-invalid': forms.get('nivel')?.invalid && (forms.get('nivel')?.dirty || forms.get('nivel')?.touched),
+          'is-valid': forms.get('nivel')?.valid && (forms.get('nivel')?.dirty || forms.get('nivel')?.touched)}">
           <option selected>Primaria</option>
           <option value="1">Secundaria</option>
           <option value="2">Bachillerato</option>
@@ -114,7 +116,9 @@
 
       <div class="mb-3 col-md-12 col-sm-12 input-group-append">
         <label for="" class="form-label col-md-12 col-sm-12 ">Municipio donde desea estudiar el alumno</label>
-        <select class="form-select form-select-sm" name="municipio" id="municipio" formControlName="municipio">
+        <select class="form-select form-select-sm" name="municipio" id="municipio" formControlName="municipio" [ngClass]="{
+          'is-invalid': forms.get('municipio')?.invalid && (forms.get('municipio')?.dirty || forms.get('municipio')?.touched),
+          'is-valid': forms.get('municipio')?.valid && (forms.get('municipio')?.dirty || forms.get('municipio')?.touched)}">
           <option selected>Saltillo</option>
           <option value="1">Arteaga</option>
           <option value="2">Candela</option>
@@ -126,7 +130,9 @@
 
       <div class="mb-3 col-md-12 col-sm-12 input-group-append">
         <label for="" class="form-label col-md-12 col-sm-12 ">Seleccione el asunto a tratar</label>
-        <select class="form-select form-select-sm" name="asunto" id="asunto" formControlName="asunto">
+        <select class="form-select form-select-sm" name="asunto" id="asunto" formControlName="asunto" [ngClass]="{
+          'is-invalid': forms.get('asunto')?.invalid && (forms.get('asunto')?.dirty || forms.get('asunto')?.touched),
+          'is-valid': forms.get('asunto')?.valid && (forms.get('asunto')?.dirty || forms.get('asunto')?.touched)}">
           <option selected>Inscripción</option>
           <option value="1">Reinscripción</option>
           <option value="2">Nuevo Ingreso</option>
