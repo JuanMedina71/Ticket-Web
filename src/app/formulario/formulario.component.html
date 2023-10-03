@@ -29,6 +29,7 @@
             'is-valid': forms.get('titular')?.valid && (forms.get('titular')?.dirty || forms.get('titular')?.touched)}" 
             aria-describedby="helpId"
             placeholder="Nombre del titular" formControlName="titular">
+            <div class="invalid-feedback">Más de 10 caracteres.</div>
           
         </div>
       </div>
@@ -40,6 +41,7 @@
             'is-invalid': forms.get('curp')?.invalid && (forms.get('curp')?.dirty || forms.get('curp')?.touched), 
             'is-valid': forms.get('curp')?.valid && (forms.get('curp')?.dirty || forms.get('curp')?.touched)}" 
             placeholder="Ingresa la CURP" formControlName="curp">
+            <div class="invalid-feedback">Formato Incorrecto.</div>
         </div>
       </div>
 
