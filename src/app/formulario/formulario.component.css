@@ -1,4 +1,3 @@
-@import "~@fortawesome/fontawesome-free/css/all.css";
 
 .navbar-brand {
     font-size: small;
@@ -38,7 +37,7 @@
 
 .container-with-border {
     border: 2px solid white; /* Establece el color y grosor del borde */
-    padding: 20px; 
+    padding: 20px;
     border-radius: 20px;/* Añade un espacio interno alrededor del contenido dentro del container */
   }
 
