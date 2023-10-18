@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ticket-generator-4c30a": {
+      "hosting": {
+        "ticket-app": [
+          "ticket-generator-4c30a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ticket-generator-4c30a"
+  }
+}

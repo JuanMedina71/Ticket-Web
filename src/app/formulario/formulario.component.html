@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Ticket de Turno</a>
@@ -23,7 +25,7 @@
 
       <div class="mb-3 col-md-6 col-sm-12">
         <div class="d-flex align-items-center input-group-append">
-          <label for="titular" class="form-label col-3">Nombre del titular</label>
+          <label for="titular" class="form-label col-3"><strong>Nombre del titular</strong></label>
           <input type="text" class="form-control" name="titular" id="titular" [ngClass]="{
             'is-invalid': forms.get('titular')?.invalid && (forms.get('titular')?.dirty || forms.get('titular')?.touched), 
             'is-valid': forms.get('titular')?.valid && (forms.get('titular')?.dirty || forms.get('titular')?.touched)}" 
@@ -145,10 +147,18 @@
       </div>
 
 
+<ng-container class="row">
 
-      <div class="mb-3 col-4 mx-auto">
-        <button type="submit" class="btn btn-primary">Generar Turno</button>
-      </div>
+  <div class="mb-3 col-3 mx-auto">
+    <button type="submit" class="btn btn-primary">Generar Turno</button>
+  </div>
+
+  <div class="mb-3 col-3  mx-auto">
+    <button type="button" class="btn btn-primary" routerLink="/ticket">Verificar Turno</button>
+  </div>
+</ng-container>
+
+      
 
     </div>
   </div>
@@ -157,3 +167,4 @@
 
 
 </form>
+

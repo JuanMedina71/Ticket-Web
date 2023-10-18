@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -12,7 +15,7 @@ export class FormularioComponent {
 
   forms: FormGroup;
 
-  constructor(private fb: FormBuilder, ) {
+  constructor(private fb: FormBuilder, private firestore: Firestore, private router: Router) {
     this.forms = this.fb.group({
       titular: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(40), ]],
       curp: ['', [Validators.required,Validators.pattern(/^([A-Z]{4}\d{6}[HM]{1}[A-Z]{5}[0-9A-Z]{2})$/)]],
@@ -28,23 +31,61 @@ export class FormularioComponent {
 
     })
   }
-
-  enviarFormulario(){
-    console.log(this.forms);
   
-    if (this.forms.valid) {
-      Swal.fire({
-        icon: 'success',
-        title: 'Registro Exitoso',
-        text: 'Sus datos han sido registrados con exito'
+  enviarFormulario(){
+    this.addData(this.forms.value);
+  }
+
+  addData (formData : any ) {
+
+    if(this.forms.valid) {
+
+      
+      const data = {
+        titular: formData.titular,
+        curp: formData.curp,
+        nombre: formData.nombre,
+        paterno: formData.paterno,
+        materno: formData.materno,
+        telefono: formData.telefono,
+        celular: formData.celular,
+        correo: formData.correo,
+        nivel: formData.nivel,
+        municipio: formData.municipio,
+        asunto: formData.asunto,
+      };
+
+      addDoc(collection(this.firestore, 'titular'), data).then(() =>  {
+        Swal.fire({
+          icon: 'success',
+          title: 'Registro con exito',
+          text: 'La información se ha guardado correctamente',
+        }).then(() => {
+          this.router.navigate(['/ticket']);
+        });
       })
+      .catch((error) =>  {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al guardar',
+          text: 'Hubo un error al guardar los datos en Firestore'
+        });
+        console.error('Error al guardar en Firestore', error)
+      });
+
     } else {
       Swal.fire({
         icon: 'error',
         title: 'Error de validación',
-        text: 'Por favor completa correctamente todos los campos'
-      })
+        text: 'Por favor complete correctamente todos los campos',
+      });
     }
+
+  }
+
+
+  verificarTurno() {
+    this.router.navigate(['/ticket']);
   }
 
   
