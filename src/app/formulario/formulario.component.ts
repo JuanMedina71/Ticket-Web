@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, getDocs, limit, orderBy, query, where } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -15,7 +15,11 @@ export class FormularioComponent {
 
   forms: FormGroup;
 
-  constructor(private fb: FormBuilder, private firestore: Firestore, private router: Router) {
+  constructor(
+    private fb: FormBuilder, 
+    private firestore: Firestore, 
+    private router: Router) {
+
     this.forms = this.fb.group({
       titular: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(40), ]],
       curp: ['', [Validators.required,Validators.pattern(/^([A-Z]{4}\d{6}[HM]{1}[A-Z]{5}[0-9A-Z]{2})$/)]],
@@ -32,13 +36,16 @@ export class FormularioComponent {
     })
   }
   
-  enviarFormulario(){
+  async enviarFormulario(){
     this.addData(this.forms.value);
   }
 
-  addData (formData : any ) {
+  async addData (formData : any ) {
 
     if(this.forms.valid) {
+      const municipio = formData.municipio;
+      const turno = await this.generateTurno(municipio);
+
 
       
       const data = {
@@ -51,8 +58,9 @@ export class FormularioComponent {
         celular: formData.celular,
         correo: formData.correo,
         nivel: formData.nivel,
-        municipio: formData.municipio,
         asunto: formData.asunto,
+        municipio: municipio,
+        turno: turno,
       };
 
       addDoc(collection(this.firestore, 'titular'), data).then(() =>  {
@@ -87,6 +95,25 @@ export class FormularioComponent {
   verificarTurno() {
     this.router.navigate(['/ticket']);
   }
+
+
+  async generateTurno(municipio: string): Promise<number> {
+    const q = query(
+      collection(this.firestore, 'titular'),
+      where('municipio', '==', municipio),
+      orderBy('turno', 'desc'),
+      limit(1)
+    );
+    const querySnapshot = await getDocs(q);
+    if(querySnapshot.empty) {
+      return 1;
+    } else {
+      const lastDoc = querySnapshot.docs[0];
+      const lastTurno = lastDoc.get('turno');
+      return lastTurno + 1;
+    }
+  }
+
 
   
 
