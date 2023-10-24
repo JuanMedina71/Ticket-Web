@@ -125,11 +125,13 @@
         <select class="form-select form-select-sm" name="municipio" id="municipio" formControlName="municipio" [ngClass]="{
           'is-invalid': forms.get('municipio')?.invalid && (forms.get('municipio')?.dirty || forms.get('municipio')?.touched),
           'is-valid': forms.get('municipio')?.valid && (forms.get('municipio')?.dirty || forms.get('municipio')?.touched)}">
-          <option selected>Saltillo</option>
+          <option value="" disabled selected>Selecciona un municipio</option>
+          <option [value]="municipio.nombre" *ngFor="let municipio of municipios">{{ municipio.nombre }}</option>
+          <!-- <option selected>Saltillo</option>
           <option value="Arteaga">Arteaga</option>
           <option value="Candela">Candela</option>
           <option value="Castaños">Castaños</option>
-          <option value="Cuatro Cienegas">Cuatro Cienegas</option>
+          <option value="Cuatro Cienegas">Cuatro Cienegas</option> -->
 
         </select>
       </div>

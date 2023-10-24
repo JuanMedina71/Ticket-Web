@@ -19,6 +19,7 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { TicketComponent } from './ticket/ticket.component';
+import { MunicipiosComponent } from './municipios/municipios.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { TicketComponent } from './ticket/ticket.component';
     LoginComponent,
     RegisterComponent,
     AdminsComponent,
+    MunicipiosComponent,
 
   ],
   imports: [

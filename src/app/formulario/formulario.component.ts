@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Firestore, addDoc, collection, getDocs, limit, orderBy, query, where } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,9 +11,10 @@ import Swal from 'sweetalert2';
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css']
 })
-export class FormularioComponent {
+export class FormularioComponent implements OnInit {
 
   forms: FormGroup;
+  municipios: any[] = [];
 
   constructor(
     private fb: FormBuilder, 
@@ -34,6 +35,19 @@ export class FormularioComponent {
       asunto: ['', Validators.required],
 
     })
+  }
+
+  ngOnInit(): void {
+    this.getMunicipios();
+  }
+
+  async getMunicipios() {
+    const querySnapshot = await getDocs(collection(this.firestore, 'municipio'));
+  
+    querySnapshot.forEach((doc) => {
+      const municipioData = doc.data();
+      this.municipios.push(municipioData);
+    });
   }
   
   async enviarFormulario(){
