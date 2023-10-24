@@ -75,6 +75,7 @@ export class FormularioComponent implements OnInit {
         asunto: formData.asunto,
         municipio: municipio,
         turno: turno,
+        estatus: 'pendiente'
       };
 
       addDoc(collection(this.firestore, 'titular'), data).then(() =>  {

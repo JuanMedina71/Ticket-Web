@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { MunicipiosComponent } from './municipios/municipios.component';
 import { RegisterComponent } from './register/register.component';
 import { TicketComponent } from './ticket/ticket.component';
+import { TurnosComponent } from './turnos/turnos.component';
 
 const routes: Routes = [
   { path: "", redirectTo:"login", pathMatch: "full"},
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'admins', component: AdminsComponent},
   { path: 'municipios', component: MunicipiosComponent},
+  { path: 'turnos', component: TurnosComponent},
   { path: '**', redirectTo:"app-formulario", pathMatch: "full"}
 
 ];

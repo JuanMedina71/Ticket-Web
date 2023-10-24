@@ -17,9 +17,10 @@ import { AdminsComponent } from './admins/admins.component';
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { LoginComponent } from './login/login.component';
+import { MunicipiosComponent } from './municipios/municipios.component';
 import { RegisterComponent } from './register/register.component';
 import { TicketComponent } from './ticket/ticket.component';
-import { MunicipiosComponent } from './municipios/municipios.component';
+import { TurnosComponent } from './turnos/turnos.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { MunicipiosComponent } from './municipios/municipios.component';
     RegisterComponent,
     AdminsComponent,
     MunicipiosComponent,
+    TurnosComponent,
 
   ],
   imports: [
