@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminsComponent } from './admins/admins.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { LoginComponent } from './login/login.component';
+import { MunicipiosComponent } from './municipios/municipios.component';
 import { RegisterComponent } from './register/register.component';
 import { TicketComponent } from './ticket/ticket.component';
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'ticket', component: TicketComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'admins', component: AdminsComponent},
+  { path: 'municipios', component: MunicipiosComponent},
   { path: '**', redirectTo:"app-formulario", pathMatch: "full"}
 
 ];

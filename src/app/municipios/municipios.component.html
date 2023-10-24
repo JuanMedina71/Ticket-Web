@@ -1,1 +1,62 @@
-<p>municipios works!</p>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <button class="navbar-toggler" type="button" data-target="#navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item ">
+          <a routerLink="/admins" class="nav-link">Colaboradores</a>
+        </li>
+        <li class="nav-item active">
+          <a routerLink="/municipios" class="nav-link">Municipios</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Turnos</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+<div class="container mt-4">
+    <h1>Listado de Municipios</h1>
+  
+    <!-- Agregar nuevo municipio -->
+    <div class="mb-3">
+      <input [(ngModel)]="nuevoMunicipio" class="form-control" placeholder="Nuevo municipio">
+      <button (click)="agregarMunicipio()" class="btn btn-primary mt-2">Agregar</button>
+    </div>
+  
+    <!-- Tabla de municipios -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let municipio of municipios; let i = index">
+          <td>
+            <ng-container *ngIf="editingIndex !== i; else editField">
+              {{ municipio.nombre }}
+            </ng-container>
+            <ng-template #editField>
+              <input [(ngModel)]="municipioEditado" class="form-control">
+            </ng-template>
+          </td>
+          <td>
+            <ng-container *ngIf="editingIndex !== i; else saveCancelButtons">
+              <button (click)="editarMunicipio(i)" class="btn btn-warning">Editar</button>
+              <button (click)="eliminarMunicipio(municipio.id)" class="btn btn-danger">Eliminar</button>
+            </ng-container>
+            <ng-template #saveCancelButtons>
+              <button (click)="guardarMunicipioEditado()" class="btn btn-success">Guardar</button>
+              <!-- <button (click)="cancelarEdicion()" class="btn btn-secondary">Cancelar</button> -->
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
