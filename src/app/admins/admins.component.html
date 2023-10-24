@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <button class="navbar-toggler" type="button" data-target="#navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a href="#" class="nav-link">Colaboradores</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Municipios</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Turnos</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<table class="table">
+  <thead>
+    <tr>
+      <!-- Encabezados de las columnas -->
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Acciones</th> <!-- Nueva columna para el botón de eliminación -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let admin of admins$ | async">
+      <!-- Datos de cada fila -->
+      <td>{{ admin.username }}</td>
+      <td>{{ admin.email }}</td>
+      <td>
+        <button (click)="eliminarAdmin(admin.id)" class="btn btn-danger">
+          <i class="fas fa-trash"></i> Eliminar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
