@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
-import { RECAPTCHA_LANGUAGE, RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -28,9 +28,9 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { LoginComponent } from './login/login.component';
 import { MunicipiosComponent } from './municipios/municipios.component';
 import { RegisterComponent } from './register/register.component';
+import { TablasComponent } from './tablas/tablas.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { TurnosComponent } from './turnos/turnos.component';
-import { TablasComponent } from './tablas/tablas.component';
 
 
 @NgModule({
@@ -67,7 +67,7 @@ import { TablasComponent } from './tablas/tablas.component';
   ],
   providers: [
     {
-      provide: RECAPTCHA_LANGUAGE,
+      provide: RECAPTCHA_SETTINGS,
       useValue: 'es'
     }
   ],

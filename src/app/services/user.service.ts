@@ -13,7 +13,7 @@ export class UserService {
     return createUserWithEmailAndPassword(this.auth, email, password);
   }
 
-  login({ email, password, recaptchaToken}: {email: string, password: string, recaptchaToken: string}) {
+  login({ email, password, }: {email: string, password: string, }) {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
 

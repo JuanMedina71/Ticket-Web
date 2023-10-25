@@ -13,5 +13,10 @@ export const firebaseConfig = {
   appId: "1:274198722991:web:e1da9fdf476a9cce61575a"
 };
 
+
+recaptcha: {
+  siteKey: '6LcDmsooAAAAAIqBRfHqfBA72pTZ26jSxjaUzEfa'
+}
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
