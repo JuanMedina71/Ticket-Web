@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { RECAPTCHA_LANGUAGE, RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { NgxCaptchaModule } from 'ngx-captcha';
 import { AppRoutingModule } from './app-routing.module';
 
 // Firebase
@@ -29,6 +30,7 @@ import { MunicipiosComponent } from './municipios/municipios.component';
 import { RegisterComponent } from './register/register.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { TurnosComponent } from './turnos/turnos.component';
+import { TablasComponent } from './tablas/tablas.component';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { TurnosComponent } from './turnos/turnos.component';
     AdminsComponent,
     MunicipiosComponent,
     TurnosComponent,
-    TicketComponent
+    TicketComponent,
+    TablasComponent,
 
   ],
   imports: [
@@ -56,6 +59,7 @@ import { TurnosComponent } from './turnos/turnos.component';
     MatTableModule,
     MatFormFieldModule,
     MatIconModule,
+    NgxCaptchaModule,
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),

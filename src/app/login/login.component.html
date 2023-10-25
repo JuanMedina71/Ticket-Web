@@ -1,22 +1,26 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="box">
-            <h1>Login</h1>
-            <h3 class="text-normal">Please enter your login and password!</h3>
-            <input type="text" formControlName="email" placeholder="Username">
-            <input type="password" formControlName="password" placeholder="Password">
-            <input type="submit" name="Registrar" value="Login">
-            <a class="text-normal" routerLink="/register">Registrar Cuenta</a>
-            
-            <div class="col-md-12">
-              <ul class="social-network social-circle">
-              </ul>
-            </div>
-          </form>
-        </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="box">
+          <h1>Login</h1>
+          <h3 class="text-normal">Please enter your login and password!</h3>
+          <input type="text" formControlName="email" placeholder="Username">
+          <input type="password" formControlName="password" placeholder="Password">
+
+          <!-- Agrega un div para mostrar el reCAPTCHA -->
+          <div class="g-recaptcha" data-sitekey="6LeEdcooAAAAADRXbxCRG9PugHq54CjYxQ77Z7TY"></div>
+          <div data-callback="onCaptchaCompleted" data-sitekey="6LeEdcooAAAAADRXbxCRG9PugHq54CjYxQ77Z7TY"></div>
+          
+          <input type="submit" name="Registrar" value="Login">
+          <a class="text-normal" routerLink="/register">Registrar Cuenta</a>
+          
+          <div class="col-md-12">
+            <ul class="social-network social-circle">
+            </ul>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  
+</div>
