@@ -10,7 +10,7 @@ import { TicketComponent } from './ticket/ticket.component';
 import { TurnosComponent } from './turnos/turnos.component';
 
 const routes: Routes = [
-  { path: "", redirectTo:"login", pathMatch: "full"},
+  { path: "", redirectTo:"app-formulario", pathMatch: "full"},
   { path: 'login', component: LoginComponent},
   { path: 'app-formulario', component: FormularioComponent},
   { path: 'ticket', component: TicketComponent},

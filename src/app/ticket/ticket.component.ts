@@ -66,18 +66,22 @@ export class TicketComponent implements OnInit {
 
   async generarComprobante(titular: any) {
     const doc = new jsPDF();
-    doc.text(`Turno: ${titular.turno}`, 10, 10);
-    doc.text(`Titular: ${titular.titular}`, 10, 20);
-    doc.text(`CURP: ${titular.curp}`, 10, 30);
-    doc.text(`Nombre del alumno: ${titular.nombre}`, 10, 40);
-    doc.text(`Apellido Paterno: ${titular.paterno}`, 10, 50);
-    doc.text(`Apellido Materno: ${titular.materno}`, 10, 60);
-    doc.text(`Celular: ${titular.celular}`, 10, 70);
-    doc.text(`Correo: ${titular.correo}`, 10, 80);
-    doc.text(`Nivel: ${titular.nivel}`, 10, 90);
-    doc.text(`Municipio: ${titular.municipio}`, 10, 100);
-    doc.text(`Asunto: ${titular.asunto}`, 10, 110);
-    doc.text(`Estatus: ${titular.estatus}`, 10, 120);
+  
+    doc.setFontSize(20); 
+    doc.text("Comprobante de Inscripción", 105, 5, { align: "center" });
+
+    doc.text(`Turno: ${titular.turno}`, 10, 20);
+    doc.text(`Titular: ${titular.titular}`, 10, 30);
+    doc.text(`CURP: ${titular.curp}`, 10, 40);
+    doc.text(`Nombre del alumno: ${titular.nombre}`, 10, 50);
+    doc.text(`Apellido Paterno: ${titular.paterno}`, 10, 60);
+    doc.text(`Apellido Materno: ${titular.materno}`, 10, 70);
+    doc.text(`Celular: ${titular.celular}`, 10, 80);
+    doc.text(`Correo: ${titular.correo}`, 10, 90);
+    doc.text(`Nivel: ${titular.nivel}`, 10, 100);
+    doc.text(`Municipio: ${titular.municipio}`, 10, 110);
+    doc.text(`Asunto: ${titular.asunto}`, 10, 120);
+    doc.text(`Estatus: ${titular.estatus}`, 10, 130);
 
     // Generar un código QR
     const qrCodeDataUrl = await QRCode.toDataURL(titular.curp, { errorCorrectionLevel: 'H' });
