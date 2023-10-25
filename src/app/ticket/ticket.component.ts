@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Firestore, collection, deleteDoc, doc, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import jsPDF from 'jspdf';
+import * as QRCode from 'qrcode';
+
 
 @Component({
   selector: 'app-ticket',
@@ -19,6 +21,7 @@ export class TicketComponent implements OnInit {
   }
 
   async loadTitulares() {
+    
     const q = query(collection(this.firestore, 'titular'), where('curp', '==', this.curpFilter));
     const querySnapshot = await getDocs(q);
 
@@ -61,7 +64,7 @@ export class TicketComponent implements OnInit {
     });
   }
 
-  generarComprobante(titular: any) {
+  async generarComprobante(titular: any) {
     const doc = new jsPDF();
     doc.text(`Turno: ${titular.turno}`, 10, 10);
     doc.text(`Titular: ${titular.titular}`, 10, 20);
@@ -75,6 +78,13 @@ export class TicketComponent implements OnInit {
     doc.text(`Municipio: ${titular.municipio}`, 10, 100);
     doc.text(`Asunto: ${titular.asunto}`, 10, 110);
     doc.text(`Estatus: ${titular.estatus}`, 10, 120);
+
+    // Generar un código QR
+    const qrCodeDataUrl = await QRCode.toDataURL(titular.curp, { errorCorrectionLevel: 'H' });
+
+    const img = new Image();
+    img.src = qrCodeDataUrl;
+    doc.addImage(img, 'PNG', 140, 10, 50, 50);
 
     doc.save('comprobante.pdf');
   }
