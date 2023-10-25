@@ -1,18 +1,54 @@
-
 <div class="container mt-4">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Consultar por CURP" [(ngModel)]="curp">
-        <button class="btn btn-primary" (click)="searchByCurp()">Buscar</button>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Consulta y Edición de Datos por CURP</h4>
+      <div class="form-group">
+        <label for="curp">Ingrese la CURP:</label>
+        <input type="text" class="form-control" id="curp" name="curp" [(ngModel)]="curpFilter" required>
+        <button (click)="loadTitulares()" class="btn btn-primary">Buscar</button>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let titular of titulares">{{ titular | json }}</li>
-      </ul>
+      <div class="table-responsive"> <!-- Envuelve la tabla en un elemento responsive -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Turno</th>
+              <th>Titular</th>
+              <th>CURP</th>
+              <th>Nombre del alumno</th>
+              <th>Paterno</th>
+              <th>Materno</th>
+              <th>Celular</th>
+              <th>Correo</th>
+              <th>Nivel</th>
+              <th>Municipio</th>
+              <th>Asunto</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let titular of titulares">
+              <td>{{ titular.turno }}</td>
+              <td><input [(ngModel)]="titular.titular" [disabled]="!titular.editando"></td>
+              <td><input [(ngModel)]="titular.curp" [disabled]="!titular.editando"></td>
+              <td><input [(ngModel)]="titular.nombre" [disabled]="!titular.editando"></td>
+              <td><input [(ngModel)]="titular.paterno" [disabled]="!titular.editando"></td>
+              <td><input [(ngModel)]="titular.materno" [disabled]="!titular.editando"></td>
+              <td><input [(ngModel)]="titular.celular" [disabled]="!titular.editando"></td>
+              <td><input [(ngModel)]="titular.correo" [disabled]="!titular.editando"></td>
+              <td><input [(ngModel)]="titular.nivel" [disabled]="!titular.editando"></td>
+              <td><input [(ngModel)]="titular.municipio" [disabled]="!titular.editando"></td>
+              <td><input [(ngModel)]="titular.asunto" [disabled]="!titular.editando"></td>
+              <td>
+                <button (click)="editarTitular(titular)" *ngIf="!titular.editando" class="btn btn-primary"><mat-icon> edit</mat-icon></button>
+                <button (click)="generarComprobante(titular)" class="btn btn-primary"><mat-icon> picture_as_pdf</mat-icon></button>
+                
+                <button (click)="guardarCambios(titular)" *ngIf="titular.editando" class="btn btn-success">Guardar</button>
+                <button (click)="cancelarEdicion(titular)" *ngIf="titular.editando" class="btn btn-danger">Cancelar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

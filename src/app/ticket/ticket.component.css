@@ -1,3 +1,4 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 .navbar-brand {
     font-size: small;
@@ -51,5 +52,13 @@
   }
 
   p {
+    color: white;
+  }
+
+  h5 {
+    color: white;
+  }
+
+  .text-white {
     color: white;
   }

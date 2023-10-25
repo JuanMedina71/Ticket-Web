@@ -2,9 +2,16 @@
 // Modulos
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { RECAPTCHA_LANGUAGE, RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { AppRoutingModule } from './app-routing.module';
+
 // Firebase
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -12,6 +19,7 @@ import { firebaseConfig } from '../environments/environment';
 
 // Componentes
 import { provideAuth } from '@angular/fire/auth';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { getAuth } from 'firebase/auth';
 import { AdminsComponent } from './admins/admins.component';
 import { AppComponent } from './app.component';
@@ -27,12 +35,12 @@ import { TurnosComponent } from './turnos/turnos.component';
   declarations: [
     AppComponent,
     FormularioComponent,
-    TicketComponent,
     LoginComponent,
     RegisterComponent,
     AdminsComponent,
     MunicipiosComponent,
     TurnosComponent,
+    TicketComponent
 
   ],
   imports: [
@@ -42,9 +50,16 @@ import { TurnosComponent } from './turnos/turnos.component';
     RecaptchaModule,
     RecaptchaFormsModule,
     FormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatIconModule,
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    BrowserAnimationsModule
   ],
   providers: [
     {
